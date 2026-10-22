@@ -1,11 +1,14 @@
 import { createRoot } from "react-dom/client";
 import Order from "./Order";
+import PizzaOfTheDay from "./PizzaOfTheDay";
+import Header from "./Header";
 
 const App = () => {
   return (
     <div>
-      <h1>Padre Gino's Pizza – Order Now</h1>
+      <Header />
       <Order />
+      <PizzaOfTheDay />
     </div>
   );
 };
