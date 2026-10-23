@@ -1,54 +1,59 @@
-import { useContext, useEffect, useState } from "react";
-import Pizza from "./Pizza";
-import Cart from "./Cart";
-import { CartContext } from "./contexts";
+import { useContext, useEffect, useState } from 'react'
+import { createLazyFileRoute } from '@tanstack/react-router'
+import Pizza from '../Pizza'
+import Cart from '../Cart'
+import { CartContext } from '../contexts'
+
+export const Route = createLazyFileRoute('/order')({
+  component: Order,
+})
 
 export default function Order() {
-  const intl = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+  const intl = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
 
-  const [pizzaTypes, setPizzaTypes] = useState([]);
-  const [pizzaType, setPizzaType] = useState("pepperoni");
-  const [pizzaSize, setPizzaSize] = useState("M");
-  const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useContext(CartContext);
+  const [pizzaTypes, setPizzaTypes] = useState([])
+  const [pizzaType, setPizzaType] = useState('pepperoni')
+  const [pizzaSize, setPizzaSize] = useState('M')
+  const [loading, setLoading] = useState(true)
+  const [cart, setCart] = useContext(CartContext)
 
-  let price, selectedPizza;
+  let price, selectedPizza
   if (!loading) {
-    selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType);
-    price = intl.format(selectedPizza.sizes[pizzaSize]);
+    selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType)
+    price = intl.format(selectedPizza.sizes[pizzaSize])
   }
 
   const fetchPizzaTypes = async () => {
-    const res = await fetch("/api/pizzas");
-    const data = await res.json();
-    setPizzaTypes(data);
-    console.log(data);
-    setLoading(false);
-  };
+    const res = await fetch('/api/pizzas')
+    const data = await res.json()
+    setPizzaTypes(data)
+    console.log(data)
+    setLoading(false)
+  }
 
   useEffect(() => {
-    fetchPizzaTypes();
-  }, []);
+    fetchPizzaTypes()
+  }, [])
 
   const addToCart = (e) => {
-    e.preventDefault();
-    setCart([...cart, { pizza: selectedPizza, size: pizzaSize, price }]);
-  };
+    e.preventDefault()
+    setCart([...cart, { pizza: selectedPizza, size: pizzaSize, price }])
+  }
 
   const checkOut = async () => {
-    await fetch("/api/order", {
-      method: "POST",
+    await fetch('/api/order', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ cart }),
-    });
-    setCart([]);
-    setLoading(true);
-  };
+    })
+    setCart([])
+    setLoading(true)
+  }
 
   return (
     <div className="order-page">
@@ -76,7 +81,7 @@ export default function Order() {
               <div>
                 <span>
                   <input
-                    checked={pizzaSize === "S"}
+                    checked={pizzaSize === 'S'}
                     type="radio"
                     name="pizza-size"
                     value="S"
@@ -87,7 +92,7 @@ export default function Order() {
                 </span>
                 <span>
                   <input
-                    checked={pizzaSize === "M"}
+                    checked={pizzaSize === 'M'}
                     type="radio"
                     name="pizza-size"
                     value="M"
@@ -98,7 +103,7 @@ export default function Order() {
                 </span>
                 <span>
                   <input
-                    checked={pizzaSize === "L"}
+                    checked={pizzaSize === 'L'}
                     type="radio"
                     name="pizza-size"
                     value="L"
@@ -127,5 +132,5 @@ export default function Order() {
       </div>
       <Cart cart={cart} checkout={checkOut} />
     </div>
-  );
+  )
 }
