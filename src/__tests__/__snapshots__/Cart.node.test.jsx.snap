@@ -12,7 +12,9 @@ exports[`snapshot with nothing in cart 1`] = `
     <p>
       Total: $0.00
     </p>
-    <button>
+    <button
+      disabled=""
+    >
       Checkout
     </button>
   </div>

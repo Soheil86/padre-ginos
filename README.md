@@ -1,5 +1,7 @@
 # Padre Gino's 🍕
 
+[![CI](https://github.com/Soheil86/padre-ginos/actions/workflows/ci.yml/badge.svg)](https://github.com/Soheil86/padre-ginos/actions/workflows/ci.yml)
+
 A pizza ordering app built with React 19. Pick a pizza and size, add it to your cart, check out, browse past orders and send a message through the contact form.
 
 I built it while working through Brian Holt's [Complete Intro to React, v9](https://frontendmasters.com/courses/complete-react-v9/) on Frontend Masters, then extended it with my own fixes, tests and tooling.

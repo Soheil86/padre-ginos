@@ -6,6 +6,7 @@ import pluginQuery from "@tanstack/eslint-plugin-query";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  { ignores: ["dist/", "coverage/"] },
   js.configs.recommended,
   {
     ...reactPlugin.configs.flat.recommended,
