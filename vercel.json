@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://padre-ginos-api.onrender.com/api/:path*"
+      "destination": "https://padre-ginos-api-ibnz.onrender.com/api/:path*"
     },
     {
       "source": "/public/:path*",
-      "destination": "https://padre-ginos-api.onrender.com/public/:path*"
+      "destination": "https://padre-ginos-api-ibnz.onrender.com/public/:path*"
     },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
