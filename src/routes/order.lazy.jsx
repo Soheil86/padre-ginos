@@ -44,15 +44,17 @@ export default function Order() {
   }
 
   const checkOut = async () => {
-    await fetch('/api/order', {
+    if (cart.length === 0) return
+    setLoading(true)
+    const res = await fetch('/api/order', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ cart }),
     })
-    setCart([])
-    setLoading(true)
+    if (res.ok) setCart([])
+    setLoading(false)
   }
 
   return (

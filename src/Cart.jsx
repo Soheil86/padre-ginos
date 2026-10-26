@@ -22,7 +22,9 @@ const Cart = ({ cart, checkout }) => {
         ))}
       </ul>
       <p>Total: {intl.format(total)}</p>
-      <button onClick={checkout}>Checkout</button>
+      <button onClick={checkout} disabled={cart.length === 0}>
+        Checkout
+      </button>
     </div>
   );
 };
