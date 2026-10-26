@@ -17,15 +17,6 @@ function ContactRoute() {
       ),
   });
 
-  function SubmitButton() {
-    const { pending } = useFormStatus();
-    return (
-      <button type="submit" disabled={pending}>
-        {pending ? "Sending…" : "Submit"}
-      </button>
-    );
-  }
-
   return (
     <div className="contact">
       <h2>Contact</h2>
@@ -40,5 +31,14 @@ function ContactRoute() {
         </form>
       )}
     </div>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button type="submit" disabled={pending}>
+      {pending ? "Sending…" : "Submit"}
+    </button>
   );
 }
