@@ -4,7 +4,13 @@
 
 A pizza ordering app built with React 19. Pick a pizza and size, add it to your cart, check out, browse past orders and send a message through the contact form.
 
-I built it while working through Brian Holt's [Complete Intro to React, v9](https://frontendmasters.com/courses/complete-react-v9/) on Frontend Masters, then extended it with my own fixes, tests and tooling.
+**Live demo: [padre-ginos-delta.vercel.app](https://padre-ginos-delta.vercel.app/)**
+
+> The API runs on Render's free plan and sleeps when nobody is using it, so the first load can take about 30 seconds.
+
+![Order page with two pizzas in the cart](docs/order.jpg)
+
+![Home page with the pizza of the day](docs/home.jpg)
 
 ## Features
 
@@ -37,13 +43,13 @@ I built it while working through Brian Holt's [Complete Intro to React, v9](http
 ### Prerequisites
 
 - Node.js 20 or newer
-- The API server from the course repo, [btholt/citr-v9-project](https://github.com/btholt/citr-v9-project). This repo only contains the frontend.
+- The API server, [padre-ginos-api](https://github.com/Soheil86/padre-ginos-api) (Fastify + SQLite). This repo only contains the frontend.
 
 ### 1. Start the API
 
 ```bash
-git clone https://github.com/btholt/citr-v9-project.git
-cd citr-v9-project/api
+git clone https://github.com/Soheil86/padre-ginos-api.git
+cd padre-ginos-api
 npm install
 npm run dev
 ```
